@@ -31,7 +31,7 @@ defmodule Virtual8086Test do
       assert Virtual8086.to_asm(binary, "") == "mov [65365], cl\n"
     end
 
-    test "Listing 40" do
+    test "Listing 39" do
       binary =
         "../computer_enhance/perfaware/part1/listing_0039_more_movs"
         |> Path.expand()
@@ -39,6 +39,17 @@ defmodule Virtual8086Test do
 
       asm = Virtual8086.to_asm(binary, "")
       File.write!("./output.asm", asm)
+    end
+
+    test "Listing 40" do
+      binary =
+        "../computer_enhance/perfaware/part1/listing_0040_challenge_movs"
+        |> Path.expand()
+        |> File.read!()
+
+      asm = Virtual8086.to_asm(binary, "")
+      IO.puts(asm)
+      File.write!("./output_40.asm", asm)
     end
   end
 end
